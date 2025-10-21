@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "name": "dotnet-format",
+      "command": "dotnet",
+      "args": ["format", "${staged}", "--verify-no-changes"],
+      "include": ["**/*.cs"]
+    },
+    {
+      "name": "dotnet-build",
+      "command": "dotnet",
+      "args": ["build", "./src/Evalr.Core/Evalr.Core.csproj"],
+      "include": ["**/*.cs", "**/*.csproj"]
+    },
+    {
+      "name": "dotnet-test",
+      "command": "dotnet",
+      "args": ["test", "./tests/Evalr.Tests/Evalr.Tests.csproj", "--no-build"],
+      "include": ["**/*.cs"]
+    }
+  ]
+}
