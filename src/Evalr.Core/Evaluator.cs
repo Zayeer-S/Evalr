@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public static class Evaluator
+internal static class Evaluator
 {
     public static double Evaluate(ExpressionTreeNode node, Dictionary<string, double> variables)
     {

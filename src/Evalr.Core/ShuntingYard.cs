@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public static class ShuntingYard
+internal static class ShuntingYard
 {
     public static List<string> InfixToPostfix(List<string> tokens, IReadOnlyDictionary<string, int> precedenceMap)
     {

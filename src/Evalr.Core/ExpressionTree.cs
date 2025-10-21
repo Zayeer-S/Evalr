@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public class ExpressionTreeNode
+internal class ExpressionTreeNode
 {
     public string Value { get; set; }
     public ExpressionTreeNode? Left { get; set; }
@@ -29,7 +29,7 @@ public class ExpressionTreeNode
     }
 }
 
-public static class ExpressionTree
+internal static class ExpressionTree
 {
     public static ExpressionTreeNode BuildTree(List<string> postfixTokens, IReadOnlyDictionary<string, int> precedenceMap, out HashSet<string> variableNames)
     {

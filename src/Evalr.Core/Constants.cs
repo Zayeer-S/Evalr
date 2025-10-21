@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public static class Constants
+internal static class Constants
 {
     public const double EPSILON = 1e-10;
 

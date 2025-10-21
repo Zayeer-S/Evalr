@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public static class NormalizeTokens
+internal static class NormalizeTokens
 {
     public static List<string> Normalize(List<string> tokens)
     {

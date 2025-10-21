@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public static class Classifier
+internal static class Classifier
 {
     public static bool IsBooleanExpression(List<string> tokens)
     {

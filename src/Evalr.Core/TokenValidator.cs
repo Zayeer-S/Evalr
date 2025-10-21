@@ -1,6 +1,6 @@
 namespace Evalr.Core;
 
-public static class TokenValidator
+internal static class TokenValidator
 {
     private static readonly HashSet<string> logicalOps = new HashSet<string>(Constants.LogicalOperatorsMap().Keys);
 
