@@ -6,8 +6,7 @@ public static class TokenValidator
     {
         if (tokens.Count == 0)
         {
-            Console.WriteLine("Error: Expression cannot be empty");
-            return false;
+            throw new InvalidOperationException("Error: Expression cannot be empty");
         }
 
         var COMPARISON_OPS = Constants.ComparisonOperatorsMap().Keys;
@@ -38,8 +37,7 @@ public static class TokenValidator
                 parenthesesCount--;
                 if (parenthesesCount < 0)
                 {
-                    Console.WriteLine("Error: Parantheses not balanced");
-                    return false;
+                    throw new InvalidOperationException("Error: Parentheses not balanced");
                 }
             }
         }
@@ -52,22 +50,19 @@ public static class TokenValidator
 
             if (!IsValidToken(token, ALL_OPS))
             {
-                Console.WriteLine($"Error: Invalid token '{token}'");
-                return false;
+                throw new InvalidOperationException($"Error: Invalid token '{token}'");
             }
 
             if (IsNumber(token))
             {
                 if (!IsValidNumber(token))
                 {
-                    Console.WriteLine($"Error: Invalid number format '{token}'");
-                    return false;
+                    throw new InvalidOperationException($"Error: Invalid number format '{token}'");
                 }
 
                 if (nextToken != null && (IsNumber(nextToken) || IsVariable(nextToken)))
                 {
-                    Console.WriteLine($"Error: Missing operator between '{token}' and '{nextToken}'");
-                    return false;
+                    throw new InvalidOperationException($"Error: Missing operator between '{token}' and '{nextToken}'");
                 }
             }
 
@@ -75,8 +70,7 @@ public static class TokenValidator
             {
                 if (nextToken != null && (IsNumber(nextToken) || IsVariable(nextToken)))
                 {
-                    Console.WriteLine($"Error: Missing operator between '{token}' and '{nextToken}'");
-                    return false;
+                    throw new InvalidOperationException($"Error: Missing operator between '{token}' and '{nextToken}'");
                 }
             }
 
@@ -87,13 +81,11 @@ public static class TokenValidator
             {
                 if (prevToken == null || prevToken == "(" || ALL_OPS.Contains(prevToken))
                 {
-                    Console.WriteLine($"Error: Binary operator '{token}' missing left operand");
-                    return false;
+                    throw new InvalidOperationException($"Error: Binary operator '{token}' missing left operand");
                 }
                 if (nextToken == null || nextToken == ")")
                 {
-                    Console.WriteLine($"Error: Binary operator '{token}' missing right operand");
-                    return false;
+                    throw new InvalidOperationException($"Error: Binary operator '{token}' missing right operand");
                 }
             }
 
@@ -101,8 +93,7 @@ public static class TokenValidator
             {
                 if (nextToken == null || nextToken == ")")
                 {
-                    Console.WriteLine($"Error: Unary operator '{token}' missing operand");
-                    return false;
+                    throw new InvalidOperationException($"Error: Unary operator '{token}' missing operand");
                 }
             }
 
@@ -110,8 +101,7 @@ public static class TokenValidator
             {
                 if (nextToken == null || nextToken == ")")
                 {
-                    Console.WriteLine("Error: 'not' operator missing operand");
-                    return false;
+                    throw new InvalidOperationException("Error: 'not' operator missing operand");
                 }
             }
 
@@ -119,13 +109,11 @@ public static class TokenValidator
             {
                 if (nextToken != null && nextToken == ")")
                 {
-                    Console.WriteLine("Error: Empty parantheses '()'");
-                    return false;
+                    throw new InvalidOperationException("Error: Empty parantheses '()'");
                 }
                 if (nextToken != null && BINARY_OPS.Contains(nextToken) && nextToken != "+" && nextToken != "-")
                 {
-                    Console.WriteLine($"Error: '(' cannot be followed by binary operator '{nextToken}'");
-                    return false;
+                    throw new InvalidOperationException($"Error: '(' cannot be followed by binary operator '{nextToken}'");
                 }
             }
 
@@ -133,8 +121,7 @@ public static class TokenValidator
             {
                 if (nextToken != null && (IsNumber(nextToken) || IsVariable(nextToken)))
                 {
-                    Console.WriteLine($"Error: Missing operator between ')' and '{nextToken}'");
-                    return false;
+                    throw new InvalidOperationException($"Error: Missing operator between ')' and '{nextToken}'");
                 }
             }
         }
@@ -143,15 +130,13 @@ public static class TokenValidator
 
         if (BINARY_OPS.Contains(firstToken) && !ADDITIVE_OPS.Contains(firstToken))
         {
-            Console.WriteLine($"Error: Expression cannot start with binary operator '{firstToken}'");
-            return false;
+            throw new InvalidOperationException($"Error: Expression cannot start with binary operator '{firstToken}'");
         }
 
         var lastToken = tokens[^1];
         if (ALL_OPS.Contains(lastToken))
         {
-            Console.WriteLine($"Error: Expression cannot end with operator '{lastToken}'");
-            return false;
+            throw new InvalidOperationException($"Error: Expression cannot end with operator '{lastToken}'");
         }
 
         return true;
