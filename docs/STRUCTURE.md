@@ -11,7 +11,8 @@ Expression-Evaluator/
 │   └── STRUCTURE.md
 ├── src/
 │   ├── Evalr.API/
-│   │   ├──
+│   │   ├── Evalr.API.csproj
+│   │   ├── EvaluatorService.cs
 │   └── Evalr.Core/
 │       ├── Classifier.cs                   # Determines whether input is boolean or arithmetic
 │       ├── Constants.cs                    # Dictionaries containing normalization and precedence heirarchies

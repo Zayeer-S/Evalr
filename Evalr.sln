@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{62E3DB67-28A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evalr.Core", "src\Evalr.Core\Evalr.Core.csproj", "{D5DFBC66-6D59-45C9-A355-3CC2D21BBFD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evalr.API", "src\Evalr.API\Evalr.API.csproj", "{A1B2C3D4-E5F6-47G8-H9I0-J1K2L3M4N5O6}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DDF2732F-ECBE-4C56-BC34-BD3180586CC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evalr.Tests", "tests\Evalr.Tests\Evalr.Tests.csproj", "{D101C381-F31F-41B2-B0F4-090B4431996D}"
