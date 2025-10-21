@@ -4,7 +4,7 @@ internal static class TokenValidator
 {
     private static readonly HashSet<string> logicalOps = new HashSet<string>(Constants.LogicalOperatorsMap().Keys);
 
-    public static bool ValidateTokens(List<string> tokens, IReadOnlyDictionary<string, int> PRECEDENCE_MAP)
+    public static bool ValidateTokens(List<string> tokens, IReadOnlyDictionary<string, int> precedenceMap)
     {
         if (tokens.Count == 0)
         {
@@ -25,7 +25,7 @@ internal static class TokenValidator
             .Concat(LOGICAL_OPS)
         );
 
-        var ALL_OPS = new HashSet<string>(PRECEDENCE_MAP.Keys);
+        var ALL_OPS = new HashSet<string>(precedenceMap.Keys);
 
         var parenthesesCount = 0;
         foreach (var token in tokens)
@@ -77,7 +77,7 @@ internal static class TokenValidator
             }
 
             bool isUnaryPlusMinus = (token == "+" || token == "-") &&
-                                    (prevToken == null || prevToken == "(" || PRECEDENCE_MAP.ContainsKey(prevToken));
+                                    (prevToken == null || prevToken == "(" || precedenceMap.ContainsKey(prevToken));
 
             if (BINARY_OPS.Contains(token) && !isUnaryPlusMinus)
             {
