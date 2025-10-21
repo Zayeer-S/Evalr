@@ -22,8 +22,8 @@ public static class Evaluator
             "<=" => Evaluate(node.Left!, variables) <= Evaluate(node.Right!, variables) ? 1.0 : 0.0,
             ">" => Evaluate(node.Left!, variables) > Evaluate(node.Right!, variables) ? 1.0 : 0.0,
             ">=" => Evaluate(node.Left!, variables) >= Evaluate(node.Right!, variables) ? 1.0 : 0.0,
-            "=" => Math.Abs(Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables)) < 1e-10 ? 1.0 : 0.0,
-            "!=" => Math.Abs(Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables)) >= 1e-10 ? 1.0 : 0.0,
+            "=" => Math.Abs(Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables)) < Constants.EPSILON ? 1.0 : 0.0,
+            "!=" => Math.Abs(Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables)) >= Constants.EPSILON ? 1.0 : 0.0,
 
             "and" => (IsTrue(Evaluate(node.Left!, variables)) && IsTrue(Evaluate(node.Right!, variables))) ? 1.0 : 0.0,
             "or" => (IsTrue(Evaluate(node.Left!, variables)) || IsTrue(Evaluate(node.Right!, variables))) ? 1.0 : 0.0,
@@ -41,7 +41,7 @@ public static class Evaluator
     {
         var divisor = Evaluate(node.Right!, variables);
 
-        if (Math.Abs(divisor) < 1e-10)
+        if (Math.Abs(divisor) < Constants.EPSILON)
         {
             throw new DivideByZeroException("Error: Division by zero");
         }
@@ -54,7 +54,7 @@ public static class Evaluator
         var baseValue = Evaluate(node.Left!, variables);
         var exponent = Evaluate(node.Right!, variables);
         
-        if (baseValue < 0 && Math.Abs(exponent - Math.Round(exponent)) > 1e-10)
+        if (baseValue < 0 && Math.Abs(exponent - Math.Round(exponent)) > Constants.EPSILON)
         {
             throw new InvalidOperationException("Error: Cannot raise negative number to non-integer power");
         }
@@ -75,6 +75,6 @@ public static class Evaluator
 
     private static bool IsTrue(double value)
     {
-        return Math.Abs(value) > 1e-10;
+        return Math.Abs(value) > Constants.EPSILON;
     }
 }
