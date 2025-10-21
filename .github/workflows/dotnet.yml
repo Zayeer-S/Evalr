@@ -1,0 +1,63 @@
+name: .NET CI/CD
+
+on:
+    push:
+        branches: [ main, develop ]
+    pull_request:
+        branches: [ main ]
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: "9.x.x"
+
+            - name: Restore dependencies
+              run: dotnet restore src/expression_evaluator/expression_evaluator.csproj
+
+            - name: Build
+              run: dotnet build src/expression_evaluator/expression_evaluator.csproj --configuration Release --no-restore
+            
+            - name: Run tests
+              run: dotnet test src/expression_evaluator/expression_evaluator.csproj --no-build --verbosity normal --configuration Release --collect:"XPlat Code Coverage"
+            
+            - name: Upload coverage to Codecov
+              uses: codecov/codecov-action@v4
+              with:
+                files: '**/coverage.cobertura.xml'
+                fail_ci_if_error: false
+            
+            - name: Check code formatting
+              run: dotnet format src/expression_evaluator/expression_evaluator.csproj --verify-no-changes --verbosity diagnostic
+              continue-on-error: true
+
+
+    release:
+        needs: build-and-test
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+        
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: '9.x.x'
+        
+        - name: Publish application
+          run: dotnet publish src/expression_evaluator/expression_evaluator.csproj -c Release -o ./publish
+        
+        - name: Upload artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: expression-evaluator-release
+            path: ./publish/
