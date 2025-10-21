@@ -1,3 +1,5 @@
+namespace Evalr.Core;
+
 public static class TokenValidator
 {
     private static readonly HashSet<string> logicalOps = new HashSet<string>(Constants.LogicalOperatorsMap().Keys);
@@ -74,7 +76,7 @@ public static class TokenValidator
                 }
             }
 
-            bool isUnaryPlusMinus = (token == "+" || token == "-") && 
+            bool isUnaryPlusMinus = (token == "+" || token == "-") &&
                                     (prevToken == null || prevToken == "(" || PRECEDENCE_MAP.ContainsKey(prevToken));
 
             if (BINARY_OPS.Contains(token) && !isUnaryPlusMinus)

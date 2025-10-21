@@ -1,3 +1,5 @@
+namespace Evalr.Core;
+
 public static class Evaluator
 {
     public static double Evaluate(ExpressionTreeNode node, Dictionary<string, double> variables)
@@ -30,10 +32,10 @@ public static class Evaluator
             "not" => IsTrue(Evaluate(node.Left!, variables)) ? 0.0 : 1.0,
 
             _ when char.IsLetter(node.Value[0]) => variables[node.Value],
-            
+
             _ => throw new InvalidOperationException($"Unknown operator: {node.Value}")
         };
-        
+
         return result;
     }
 
@@ -48,19 +50,19 @@ public static class Evaluator
 
         return Evaluate(node.Left!, variables) / divisor;
     }
-    
+
     private static double PowerWithCheck(ExpressionTreeNode node, Dictionary<string, double> variables)
     {
         var baseValue = Evaluate(node.Left!, variables);
         var exponent = Evaluate(node.Right!, variables);
-        
+
         if (baseValue < 0 && Math.Abs(exponent - Math.Round(exponent)) > Constants.EPSILON)
         {
             throw new InvalidOperationException("Error: Cannot raise negative number to non-integer power");
         }
-        
+
         var result = Math.Pow(baseValue, exponent);
-        
+
         if (double.IsNaN(result))
         {
             throw new InvalidOperationException("Error: Invalid power operation");
@@ -69,7 +71,7 @@ public static class Evaluator
         {
             throw new InvalidOperationException("Error: Result is too large (infinity)");
         }
-        
+
         return result;
     }
 

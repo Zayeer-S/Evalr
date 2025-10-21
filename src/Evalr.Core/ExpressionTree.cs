@@ -1,3 +1,5 @@
+namespace Evalr.Core;
+
 public class ExpressionTreeNode
 {
     public string Value { get; set; }

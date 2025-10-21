@@ -1,4 +1,7 @@
-public static class Constants {
+namespace Evalr.Core;
+
+public static class Constants
+{
     public const double EPSILON = 1e-10;
 
     public static IReadOnlyDictionary<string, string> NormalizationMap()

@@ -1,3 +1,5 @@
+namespace Evalr.Core;
+
 public static class ShuntingYard
 {
     public static List<string> InfixToPostfix(List<string> tokens, IReadOnlyDictionary<string, int> precedenceMap)
@@ -37,9 +39,9 @@ public static class ShuntingYard
             if (IsUnaryOperator(token, i, tokens, precedenceMap))
             {
                 var unaryToken = token == "-" ? "UNARY_MINUS" : "UNARY_PLUS";
-                
-                while (operatorStack.Count > 0 && 
-                       operatorStack.Peek() != "(" && 
+
+                while (operatorStack.Count > 0 &&
+                       operatorStack.Peek() != "(" &&
                        precedenceMap.ContainsKey(operatorStack.Peek()) &&
                        precedenceMap[operatorStack.Peek()] > precedenceMap[unaryToken])
                 {
@@ -51,8 +53,8 @@ public static class ShuntingYard
 
             if (precedenceMap.ContainsKey(token))
             {
-                while (operatorStack.Count > 0 && 
-                       operatorStack.Peek() != "(" && 
+                while (operatorStack.Count > 0 &&
+                       operatorStack.Peek() != "(" &&
                        precedenceMap.ContainsKey(operatorStack.Peek()))
                 {
                     var topPrecedence = precedenceMap[operatorStack.Peek()];

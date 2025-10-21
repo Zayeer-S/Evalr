@@ -1,3 +1,5 @@
+namespace Evalr.Core;
+
 public static class Tokenizer
 {
     public static List<string> GetTokens(string expression)
