@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Evalr.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d812d1c602f968e8d3b9b91b75b81b7e194752c7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ddef360c800e269ed4fd4af81d6e8a0788cedb8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Evalr.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Evalr.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
