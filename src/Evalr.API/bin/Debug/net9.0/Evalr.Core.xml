@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Evalr.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Evalr.Core.EvalrEngine">
+            <summary>
+            Main orchestration engine for expression evaluation.
+            Coordinates tokenization, validation, parsing, and evaluation of mathematical and boolean expressions.
+            </summary>
+        </member>
+        <member name="M:Evalr.Core.EvalrEngine.Evaluate(System.String,System.Collections.Generic.Dictionary{System.String,System.Double})">
+            <summary>
+            Evaluates a mathematical or boolean expression with optional variables.
+            </summary>
+            <param name="expression">The expression string to evaluate</param>
+            <param name="variables">Optional dictionary of variable names and their values</param>
+            <returns>The computed result as a double (0.0 for false, 1.0 for true in boolean expressions)</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when expression is invalid or contains errors</exception>
+            <exception cref="T:System.DivideByZeroException">Thrown when division by zero is attempted</exception>
+        </member>
+        <member name="M:Evalr.Core.EvalrEngine.ExtractVariables(System.String)">
+            <summary>
+            Extracts variable names from an expression without full evaluation.
+            Lightweight operation - only tokenizes and identifies variables.
+            </summary>
+            <param name="expression">The expression string to parse</param>
+            <returns>List of variable names found in the expression</returns>
+        </member>
+        <member name="M:Evalr.Core.EvalrEngine.ValidateVariables(System.Collections.Generic.HashSet{System.String},System.Collections.Generic.Dictionary{System.String,System.Double})">
+            <summary>
+            Validates that all required variables have been provided.
+            </summary>
+        </member>
+        <member name="T:Evalr.Core.EvaluationResult">
+            <summary>
+            Represents the result of an expression evaluation.
+            </summary>
+        </member>
+        <member name="P:Evalr.Core.EvaluationResult.Value">
+            <summary>
+            The computed numerical result.
+            For boolean expressions: 0.0 = false, 1.0 = true
+            </summary>
+        </member>
+        <member name="P:Evalr.Core.EvaluationResult.IsBooleanExpression">
+            <summary>
+            Indicates if the expression contains boolean/logical operators.
+            </summary>
+        </member>
+        <member name="P:Evalr.Core.EvaluationResult.HasNumericVariables">
+            <summary>
+            Indicates if the expression uses numeric variables.
+            </summary>
+        </member>
+        <member name="P:Evalr.Core.EvaluationResult.Variables">
+            <summary>
+            The variables used in the evaluation with their values.
+            </summary>
+        </member>
+        <member name="P:Evalr.Core.EvaluationResult.OriginalExpression">
+            <summary>
+            The original expression string.
+            </summary>
+        </member>
+        <member name="P:Evalr.Core.EvaluationResult.PostfixNotation">
+            <summary>
+            The expression in postfix (RPN) notation.
+            </summary>
+        </member>
+        <member name="M:Evalr.Core.EvaluationResult.AsBool">
+            <summary>
+            Returns the result formatted as a boolean if applicable.
+            </summary>
+        </member>
+        <member name="M:Evalr.Core.EvaluationResult.ToString">
+            <summary>
+            Returns a formatted string representation of the result.
+            </summary>
+        </member>
+    </members>
+</doc>
