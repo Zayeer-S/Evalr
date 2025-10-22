@@ -10,7 +10,7 @@ COPY . .
 
 WORKDIR "/src/src/Evalr.API"
 RUN dotnet build "Evalr.API.csproj" -c Release -o /app/build
-RUN dotnet build "Evalr.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Evalr.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM public.ecr.aws/lambda/dotnet:8 AS runtime
 
