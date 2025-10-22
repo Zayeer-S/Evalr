@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  evalr-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: evalr-api
+    ports:
+      - "9000:8080"
+    environment:
+      - AWS_LAMBDA_FUNCTION_MEMORY_SIZE=512
+      - AWS_LAMBDA_FUNCTION_TIMEOUT=30
+      - AWS_LAMBDA_FUNCTION_VERSION=1
+      - AWS_REGION=us-east-1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/2015-03-31/functions/function/invocations", "-d", '{"path":"/health","httpMethod":"GET"}']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - evalr-network
+
+  test-client:
+    image: curlimages/curl:latest
+    container_name: evalr-test-client
+    depends_on:
+      - evalr-api
+    networks:
+      - evalr-network
+    entrypoint: /bin/sh
+    command: -c "sleep infinity"
+    profiles:
+      - testing
+
+networks:
+  evalr-network:
+    driver: bridge
