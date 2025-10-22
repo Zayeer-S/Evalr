@@ -1,7 +1,7 @@
 Evalr/
 ├── .config/    
 │   └── dotnet-tools.json
-├── .github/                                # CI/CD
+├── .github/
 │   └── workflows/
 │       └── dotnet.yml
 ├── .husky/       
@@ -12,22 +12,28 @@ Evalr/
 ├── src/
 │   ├── Evalr.API/
 │   │   ├── Evalr.API.csproj
-│   │   ├── EvaluatorService.cs
-│   └── Evalr.Core/
-│       ├── Classifier.cs                   # Determines whether input is boolean or arithmetic
-│       ├── Constants.cs                    # Dictionaries containing normalization and precedence heirarchies
-│       ├── Evalr.Core.csproj
-│       ├── EvalrEngine.cs
-│       ├── Evaluator.cs                    # Evaluates tree, calculating the result
-│       ├── ExpressionTree.cs               # Builds the tree using postfix from ShuntingYard
-│       ├── NormalizeTokens.cs              # Converts any unicode characters in tokens into ASCII
-│       ├── ShuntingYard.cs                 # Converts infix notation into postfix notation
-│       ├── Tokenizer.cs                    # Tokenizes user input
-│       └── TokenValidator.cs               # Validates tokens
+│   │   ├── LamdbaHandler.cs
+│   │   ├── Models.cs
+│   ├── Evalr.Core/
+│   │   ├── Classifier.cs                   # Determines whether input is boolean or arithmetic
+│   │   ├── Constants.cs                    # Dictionaries containing normalization and precedence heirarchies
+│   │   ├── Evalr.Core.csproj
+│   │   ├── EvalrEngine.cs
+│   │   ├── Evaluator.cs                    # Evaluates tree, calculating the result
+│   │   ├── ExpressionTree.cs               # Builds the tree using postfix from ShuntingYard
+│   │   ├── NormalizeTokens.cs              # Converts any unicode characters in tokens into ASCII
+│   │   ├── ShuntingYard.cs                 # Converts infix notation into postfix notation
+│   │   ├── Tokenizer.cs                    # Tokenizes user input
+│   │   └── TokenValidator.cs               # Validates tokens
+│   └── scripts/
+│       └── test-lamda.sh
 ├── tests/                                  # Unit tests
 │   └── Evalr.Tests/
 │       ├── EvalrTests.csproj
 │       └── UnitTest1.cs
 ├── .editorconfig
 ├── .gitignore                              # Files to exclude from version control
+├── docker-compose.yml
+├── DockerFile
+├── Evalr.sln
 └── README.md                               # Project overview and setup guide
