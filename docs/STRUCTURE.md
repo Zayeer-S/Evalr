@@ -1,4 +1,4 @@
-Expression-Evaluator/
+Evalr/
 ├── .config/    
 │   └── dotnet-tools.json
 ├── .github/                                # CI/CD

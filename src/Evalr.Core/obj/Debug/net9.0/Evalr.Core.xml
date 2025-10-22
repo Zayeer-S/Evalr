@@ -20,6 +20,19 @@
             <exception cref="T:System.InvalidOperationException">Thrown when expression is invalid or contains errors</exception>
             <exception cref="T:System.DivideByZeroException">Thrown when division by zero is attempted</exception>
         </member>
+        <member name="M:Evalr.Core.EvalrEngine.ExtractVariables(System.String)">
+            <summary>
+            Extracts variable names from an expression without full evaluation.
+            Lightweight operation - only tokenizes and identifies variables.
+            </summary>
+            <param name="expression">The expression string to parse</param>
+            <returns>List of variable names found in the expression</returns>
+        </member>
+        <member name="M:Evalr.Core.EvalrEngine.ValidateVariables(System.Collections.Generic.HashSet{System.String},System.Collections.Generic.Dictionary{System.String,System.Double})">
+            <summary>
+            Validates that all required variables have been provided.
+            </summary>
+        </member>
         <member name="T:Evalr.Core.EvaluationResult">
             <summary>
             Represents the result of an expression evaluation.
