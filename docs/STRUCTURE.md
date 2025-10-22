@@ -26,7 +26,7 @@ Evalr/
 │   │   ├── Tokenizer.cs                    # Tokenizes user input
 │   │   └── TokenValidator.cs               # Validates tokens
 │   └── scripts/
-│       └── test-lamda.sh
+│       └── test-lambda.sh
 ├── tests/                                  # Unit tests
 │   └── Evalr.Tests/
 │       ├── EvalrTests.csproj
