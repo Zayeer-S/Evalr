@@ -6,12 +6,7 @@ namespace Evalr.Core;
 /// </summary>
 public class EvalrEngine
 {
-    private readonly IReadOnlyDictionary<string, int> _precedenceMap;
-
-    public EvalrEngine()
-    {
-        _precedenceMap = Constants.PrecedenceMap();
-    }
+    private static readonly IReadOnlyDictionary<string, int> _precedenceMap = Constants.PrecedenceMap();
 
     /// <summary>
     /// Evaluates a mathematical or boolean expression with optional variables.
@@ -46,10 +41,45 @@ public class EvalrEngine
             HasNumericVariables = hasNumericVariables,
             Variables = new Dictionary<string, double>(variables),
             OriginalExpression = expression,
-            PostfixNotation = string.Join(" ", postfixTokens),
+            PostfixNotation = string.Join(" ", postfixTokens)
         };
     }
 
+    /// <summary>
+    /// Extracts variable names from an expression without full evaluation.
+    /// Lightweight operation - only tokenizes and identifies variables.
+    /// </summary>
+    /// <param name="expression">The expression string to parse</param>
+    /// <returns>List of variable names found in the expression</returns>
+    public List<string> ExtractVariables(string expression)
+    {
+        var tokens = Tokenizer.GetTokens(expression);
+        tokens = NormalizeTokens.Normalize(tokens);
+
+        var variables = new HashSet<string>();
+        var allOps = _precedenceMap.Keys;
+
+        foreach (var token in tokens)
+        {
+            // Skip operators, parentheses, and numbers
+            if (allOps.Contains(token) || token == "(" || token == ")")
+            {
+                continue;
+            }
+
+            // If it's not a number, it's a variable
+            if (!double.TryParse(token, out _))
+            {
+                variables.Add(token);
+            }
+        }
+
+        return variables.ToList();
+    }
+
+    /// <summary>
+    /// Validates that all required variables have been provided.
+    /// </summary>
     private void ValidateVariables(HashSet<string> requiredVariables, Dictionary<string, double> providedVariables)
     {
         var missingVariables = requiredVariables.Except(providedVariables.Keys).ToList();
