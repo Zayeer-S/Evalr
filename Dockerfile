@@ -1,4 +1,12 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM amazonlinux:2023 AS build
+
+RUN dnf install -y wget tar gzip findutils icu && \
+    wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
+    chmod +x dotnet-install.sh && \
+    ./dotnet-install.sh --channel 8.0 --install-dir /usr/share/dotnet && \
+    ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet && \
+    dnf clean all
+
 WORKDIR /src
 
 COPY ["src/Evalr.API/Evalr.API.csproj", "src/Evalr.API/"]
