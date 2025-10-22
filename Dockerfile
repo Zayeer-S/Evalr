@@ -25,4 +25,5 @@ FROM public.ecr.aws/lambda/dotnet:8 AS runtime
 WORKDIR /var/task
 COPY --from=build /app/publish .
 
+ENTRYPOINT ["/lambda-entrypoint.sh"]
 CMD ["Evalr.API::Evalr.API.LambdaHandler::HandleRequest"]

@@ -30,13 +30,13 @@ EOF
 )
     
     echo "Request:"
-    echo "$payload" | jq '.' 2>/dev/null || echo "$payload"
+    echo "$payload"
     echo ""
     
     echo "Response:"
     curl -s -X POST "${LAMBDA_URL}" \
         -H "Content-Type: application/json" \
-        -d "${payload}" | jq '.' 2>/dev/null || echo "Error: jq not installed or invalid JSON"
+        -d "${payload}"
     echo -e "\n---\n"
 }
 
