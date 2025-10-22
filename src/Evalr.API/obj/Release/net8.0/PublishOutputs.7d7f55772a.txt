@@ -1,0 +1,11 @@
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.API.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.API.deps.json
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.API.runtimeconfig.json
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.API.pdb
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Amazon.Lambda.APIGatewayEvents.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Amazon.Lambda.Core.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Amazon.Lambda.Serialization.SystemTextJson.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.Core.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.Core.pdb
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.Core.xml
+C:\Users\abdul\Desktop\Personal Projects\Evalr\publish-test\Evalr.API.xml

@@ -1,0 +1,14 @@
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\bin\Release\net8.0\Evalr.Core.deps.json
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\bin\Release\net8.0\Evalr.Core.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\bin\Release\net8.0\Evalr.Core.pdb
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\bin\Release\net8.0\Evalr.Core.xml
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.AssemblyInfoInputs.cache
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.AssemblyInfo.cs
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.csproj.CoreCompileInputs.cache
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.sourcelink.json
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\refint\Evalr.Core.dll
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.xml
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\Evalr.Core.pdb
+C:\Users\abdul\Desktop\Personal Projects\Evalr\src\Evalr.Core\obj\Release\net8.0\ref\Evalr.Core.dll

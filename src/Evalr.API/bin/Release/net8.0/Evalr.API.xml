@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Evalr.API</name>
+    </assembly>
+    <members>
+        <member name="T:Evalr.API.LambdaHandler">
+            <summary>
+            AWS lambda function handler for the Evalr expression evaluation API
+            </summary>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.HandleRequest(Amazon.Lambda.APIGatewayEvents.APIGatewayProxyRequest,Amazon.Lambda.Core.ILambdaContext)">
+            <summary>
+            Main handler for API gateway proxy integrations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.HandleHealth(Amazon.Lambda.Core.ILambdaContext)">
+            <summary>
+            Health check endpoint.
+            GET /health
+            </summary>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.HandleEvaluate(Amazon.Lambda.APIGatewayEvents.APIGatewayProxyRequest,Amazon.Lambda.Core.ILambdaContext)">
+            <summary>
+            Evaluate expression endpoint.
+            POST /evaluate
+            </summary>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.HandleExtractVariables(Amazon.Lambda.APIGatewayEvents.APIGatewayProxyRequest,Amazon.Lambda.Core.ILambdaContext)">
+            <summary>
+            Extract variables endpoint.
+            POST /extract-variables
+            </summary>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.CreateSuccessResponse``1(``0,System.Net.HttpStatusCode)">
+            <summary>
+            Creates a successful API Gateway response.
+            </summary>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.CreateErrorResponse(System.Net.HttpStatusCode,System.String,System.String,System.String)">
+            <summary>
+            Creates an error API Gateway response.
+            </summary>
+        </member>
+        <member name="M:Evalr.API.LambdaHandler.GetVersion">
+            <summary>
+            Gets the assembly version
+            </summary>
+        </member>
+        <member name="T:Evalr.API.Models.EvaluateRequest">
+            <summary>
+            Request to evaluate a mathematical or boolean expression.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Evalr.API.Models.EvaluateRequest.Expression" -->
+        <member name="P:Evalr.API.Models.EvaluateRequest.Variables">
+            <summary>
+            Optional dictionary of variable values.
+            Key: variable name, Value: numeric value.
+            </summary>
+        </member>
+        <member name="T:Evalr.API.Models.EvaluateResponse">
+            <summary>
+            Response containing the evaluation result.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.EvaluateResponse.Value">
+            <summary>
+            The computed numerical result.
+            For boolean expressions: 0.0 = false, 1.0 = true.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.EvaluateResponse.DisplayValue">
+            <summary>
+            Human-readable string representation of the result.
+            For boolean expressions, returns "true" or "false".
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.EvaluateResponse.IsBooleanExpression">
+            <summary>
+            Indicates if this was a boolean expression.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.EvaluateResponse.Variables">
+            <summary>
+            The variables that were used in the evaluation.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.EvaluateResponse.Expression">
+            <summary>
+            The original expression that was evaluated.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.EvaluateResponse.PostfixNotation">
+            <summary>
+            The expression in postfix (Reverse Polish) notation.
+            Useful for debugging and educational purposes.
+            </summary>
+        </member>
+        <member name="T:Evalr.API.Models.ExtractVariablesRequest">
+            <summary>
+            Request to extract variable names from an expression.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ExtractVariablesRequest.Expression">
+            <summary>
+            The expression to analyze for variables.
+            </summary>
+        </member>
+        <member name="T:Evalr.API.Models.ExtractVariablesResponse">
+            <summary>
+            Response containing extracted variable names.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ExtractVariablesResponse.Variables">
+            <summary>
+            List of variable names found in the expression.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ExtractVariablesResponse.Expression">
+            <summary>
+            The original expression that was analyzed.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ExtractVariablesResponse.HasVariables">
+            <summary>
+            Indicates if the expression contains any variables.
+            </summary>
+        </member>
+        <member name="T:Evalr.API.Models.ErrorResponse">
+            <summary>
+            Standard error response for all API endpoints.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ErrorResponse.Error">
+            <summary>
+            Error type/category (e.g., "ValidationError", "EvaluationError").
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ErrorResponse.Message">
+            <summary>
+            Detailed error message.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ErrorResponse.Expression">
+            <summary>
+            The expression that caused the error (if applicable).
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.ErrorResponse.StatusCode">
+            <summary>
+            HTTP status code.
+            </summary>
+        </member>
+        <member name="T:Evalr.API.Models.HealthResponse">
+            <summary>
+            Health check
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.HealthResponse.Status">
+            <summary>
+            Service status (e.g., "healthy", "degraded", "unhealthy").
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.HealthResponse.Version">
+            <summary>
+            Service version (from assembly).
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.HealthResponse.Timestamp">
+            <summary>
+            Current timestamp.
+            </summary>
+        </member>
+        <member name="P:Evalr.API.Models.HealthResponse.Checks">
+            <summary>
+            Optional details about what was checked.
+            </summary>
+        </member>
+    </members>
+</doc>
